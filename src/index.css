@@ -15,14 +15,25 @@
   --color-flag: #E0562A;
 }
 
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
+  margin: 0;
+  padding: 0;
   background-color: var(--color-paper);
   color: var(--color-ink);
   font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {

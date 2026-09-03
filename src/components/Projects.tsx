@@ -3,9 +3,9 @@ import { projects } from "../data";
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-20 border-t border-[var(--color-line)]">
-      <p className="font-mono text-sm text-[var(--color-signal)]">04 — projects</p>
-      <h2 className="font-display text-3xl lg:text-4xl font-semibold mt-4">
+    <section id="projects" className="py-12 sm:py-16 md:py-20 border-t border-[var(--color-line)]">
+      <p className="font-mono text-xs sm:text-sm text-[var(--color-signal)]">04 — projects</p>
+      <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-semibold mt-4">
         Things I've shipped
       </h2>
 
@@ -16,7 +16,7 @@ export default function Projects() {
             href={project.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="group grid lg:grid-cols-[80px_1fr_auto] gap-4 lg:gap-8 items-start py-8 border-t border-[var(--color-line)] last:border-b hover:bg-[var(--color-paper-dim)] transition-colors -mx-4 px-4"
+            className="group grid grid-cols-1 md:grid-cols-[60px_1fr] lg:grid-cols-[80px_1fr_auto] gap-4 lg:gap-8 items-start py-6 sm:py-8 border-t border-[var(--color-line)] last:border-b hover:bg-[var(--color-paper-dim)] transition-colors -mx-4 px-4"
           >
             <span className="font-mono text-sm text-[var(--color-ink-soft)]">
               {project.index}

@@ -2,40 +2,40 @@ import { profile } from "../data";
 
 export default function Hero() {
   return (
-    <section id="top" className="pt-16 pb-20 lg:pt-24 lg:pb-28">
-      <div className="flex items-center gap-4">
+    <section id="top" className="py-12 sm:py-16 md:py-20 lg:py-28">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
         <img
           src={profile.photo}
           alt={profile.name}
-          className="h-16 w-16 rounded-full object-cover border border-[var(--color-line)]"
+          className="h-12 w-12 sm:h-16 sm:w-16 rounded-full object-cover border border-[var(--color-line)] flex-shrink-0"
         />
-        <p className="font-mono text-sm text-[var(--color-signal)]">
+        <p className="font-mono text-xs sm:text-sm text-[var(--color-signal)]">
           01 — building for the web since 2024
         </p>
       </div>
-      <h1 className="font-display text-[13vw] leading-[0.95] sm:text-6xl lg:text-7xl font-semibold mt-6 max-w-3xl text-[var(--color-ink)]">
+      <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.95] font-semibold mt-6 sm:mt-8 text-[var(--color-ink)]">
         Interfaces that hold up in production, not just in Figma.
       </h1>
-      <p className="mt-8 max-w-xl text-lg text-[var(--color-ink-soft)] leading-relaxed">
+      <p className="mt-6 sm:mt-8 text-base sm:text-lg text-[var(--color-ink-soft)] leading-relaxed max-w-2xl">
         {profile.summary}
       </p>
 
-      <div className="mt-10 flex flex-wrap gap-4">
+      <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
         <a
           href="#projects"
-          className="inline-flex items-center gap-2 bg-[var(--color-ink)] text-[var(--color-paper)] px-6 py-3 font-mono text-sm rounded-sm hover:bg-[var(--color-signal)] transition-colors"
+          className="inline-flex items-center justify-center sm:justify-start gap-2 bg-[var(--color-ink)] text-[var(--color-paper)] px-6 py-2.5 sm:py-3 font-mono text-sm rounded-sm hover:bg-[var(--color-signal)] transition-colors"
         >
           view projects
         </a>
         <a
           href="#contact"
-          className="inline-flex items-center gap-2 border border-[var(--color-line)] px-6 py-3 font-mono text-sm rounded-sm hover:border-[var(--color-ink)] transition-colors"
+          className="inline-flex items-center justify-center sm:justify-start gap-2 border border-[var(--color-line)] px-6 py-2.5 sm:py-3 font-mono text-sm rounded-sm hover:border-[var(--color-ink)] transition-colors"
         >
           get in touch
         </a>
       </div>
 
-      <dl className="mt-16 grid grid-cols-3 gap-6 max-w-xl border-t border-[var(--color-line)] pt-8">
+      <dl className="mt-12 sm:mt-16 grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6 border-t border-[var(--color-line)] pt-8">
         <div>
           <dt className="font-mono text-xs text-[var(--color-ink-soft)]">experience</dt>
           <dd className="font-display text-2xl mt-1">1+ yrs</dd>

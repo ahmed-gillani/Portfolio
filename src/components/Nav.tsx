@@ -32,13 +32,13 @@ export default function Nav() {
 
   return (
     <>
-      <header className="lg:hidden sticky top-0 z-40 flex items-center justify-between border-b border-[var(--color-line)] bg-[var(--color-paper)]/95 backdrop-blur px-5 py-4">
-        <a href="#top" className="font-mono text-sm text-[var(--color-ink)]">
+      <header className="lg:hidden sticky top-0 z-40 flex items-center justify-between border-b border-[var(--color-line)] bg-[var(--color-paper)]/95 backdrop-blur px-4 sm:px-5 py-3 sm:py-4 w-full">
+        <a href="#top" className="font-mono text-xs sm:text-sm text-[var(--color-ink)]">
           ~/gillani
         </a>
         <button
           onClick={() => setOpen(!open)}
-          className="font-mono text-xs border border-[var(--color-line)] px-3 py-1.5 rounded"
+          className="font-mono text-xs border border-[var(--color-line)] px-3 py-1.5 rounded hover:bg-[var(--color-paper-dim)] transition-colors"
           aria-expanded={open}
           aria-label="Toggle navigation"
         >
@@ -46,13 +46,13 @@ export default function Nav() {
         </button>
       </header>
       {open && (
-        <div className="lg:hidden border-b border-[var(--color-line)] bg-[var(--color-paper)] px-5 py-4 flex flex-col gap-3">
+        <div className="lg:hidden border-b border-[var(--color-line)] bg-[var(--color-paper)] px-4 sm:px-5 py-3 sm:py-4 flex flex-col gap-3 w-full">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="font-mono text-sm text-[var(--color-ink-soft)]"
+              className="font-mono text-sm text-[var(--color-ink-soft)] hover:text-[var(--color-ink)] transition-colors"
             >
               ./{l.label}
             </a>

@@ -2,15 +2,15 @@ import { certifications, education, experience } from "../data";
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-20 border-t border-[var(--color-line)]">
-      <p className="font-mono text-sm text-[var(--color-signal)]">03 — experience</p>
-      <h2 className="font-display text-3xl lg:text-4xl font-semibold mt-4">
+    <section id="experience" className="py-12 sm:py-16 md:py-20 border-t border-[var(--color-line)]">
+      <p className="font-mono text-xs sm:text-sm text-[var(--color-signal)]">03 — experience</p>
+      <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-semibold mt-4">
         Where I've worked
       </h2>
 
-      <div className="mt-12 flex flex-col gap-14">
+      <div className="mt-12 flex flex-col gap-10 sm:gap-12 lg:gap-14">
         {experience.map((job) => (
-          <div key={job.company} className="grid lg:grid-cols-[200px_1fr] gap-6">
+          <div key={job.company} className="grid grid-cols-1 md:grid-cols-[160px_1fr] lg:grid-cols-[200px_1fr] gap-4 sm:gap-6">
             <div>
               <h3 className="font-display text-xl font-semibold">{job.company}</h3>
               <p className="font-mono text-xs text-[var(--color-ink-soft)] mt-1">
