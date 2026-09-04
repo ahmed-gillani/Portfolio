@@ -1,7 +1,30 @@
+import { useEffect } from "react";
 import { ArrowUpRight } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 import { projects } from "../data";
 
 export default function Projects() {
+  const location = useLocation();
+  const state = location.state as { scrollToProjectId?: string } | null;
+
+  useEffect(() => {
+    // If we have a scrollToProjectId in state, scroll to that project
+    if (state?.scrollToProjectId) {
+      const element = document.getElementById(`project-${state.scrollToProjectId}`);
+      if (element) {
+        // Small delay to ensure the DOM is ready
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth", block: "center" });
+          // Highlight the project briefly
+          element.classList.add("highlight-project");
+          setTimeout(() => {
+            element.classList.remove("highlight-project");
+          }, 2000);
+        }, 100);
+      }
+    }
+  }, [state?.scrollToProjectId]);
+
   return (
     <section id="projects" className="py-12 sm:py-16 md:py-20 border-t border-[var(--color-line)]">
       <p className="font-mono text-xs sm:text-sm text-[var(--color-signal)]">04 — projects</p>
@@ -11,12 +34,10 @@ export default function Projects() {
 
       <div className="mt-12 flex flex-col">
         {projects.map((project) => (
-          <a
+          <div
             key={project.name}
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group grid grid-cols-1 md:grid-cols-[60px_1fr] lg:grid-cols-[80px_1fr_auto] gap-4 lg:gap-8 items-start py-6 sm:py-8 border-t border-[var(--color-line)] last:border-b hover:bg-[var(--color-paper-dim)] transition-colors -mx-4 px-4"
+            id={`project-${project.id}`}
+            className="grid grid-cols-1 md:grid-cols-[60px_1fr] lg:grid-cols-[80px_1fr_auto] gap-4 lg:gap-8 items-start py-6 sm:py-8 border-t border-[var(--color-line)] last:border-b -mx-4 px-4 transition-colors duration-500"
           >
             <span className="font-mono text-sm text-[var(--color-ink-soft)]">
               {project.index}
@@ -63,14 +84,35 @@ export default function Projects() {
                   </span>
                 ))}
               </div>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Link
+                  to={`/projects/${project.id}`}
+                  state={{ fromProjectId: project.id }}
+                  className="inline-flex items-center gap-2 px-4 py-2 border border-[var(--color-line)] rounded-md text-sm font-medium hover:bg-[var(--color-paper-dim)] hover:border-[var(--color-ink)] transition-colors"
+                >
+                  Learn More
+                  <ArrowUpRight size={16} />
+                </Link>
+                {project.link && (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 border border-[var(--color-line)] rounded-md text-sm font-medium hover:bg-[var(--color-paper-dim)] hover:border-[var(--color-ink)] transition-colors"
+                  >
+                    Visit Live
+                    <ArrowUpRight size={16} />
+                  </a>
+                )}
+              </div>
             </div>
 
-            <div className="flex lg:justify-end items-start">
-              <span className="inline-flex items-center justify-center h-10 w-10 rounded-full border border-[var(--color-line)] group-hover:border-[var(--color-ink)] group-hover:bg-[var(--color-ink)] group-hover:text-[var(--color-paper)] transition-colors">
+            <div className="hidden lg:flex lg:justify-end items-start">
+              <span className="inline-flex items-center justify-center h-10 w-10 rounded-full border border-[var(--color-line)] hover:border-[var(--color-ink)] hover:bg-[var(--color-ink)] hover:text-[var(--color-paper)] transition-colors">
                 <ArrowUpRight size={18} />
               </span>
             </div>
-          </a>
+          </div>
         ))}
       </div>
     </section>

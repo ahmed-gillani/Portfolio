@@ -56,3 +56,8 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Highlight animation for project on return from details */
+.highlight-project {
+  background-color: var(--color-signal-soft) !important;
+}
