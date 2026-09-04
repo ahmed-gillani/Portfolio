@@ -87,7 +87,7 @@ export default function Nav() {
           <img
             src={profile.photo}
             alt={profile.name}
-            className="h-14 w-14 rounded-full object-cover border border-[var(--color-line)] mb-4"
+            className="h-20 w-20 rounded-full object-contain border border-[var(--color-line)] mb-4 bg-white"
           />
           <Link to="/" className="block font-display text-lg font-semibold text-[var(--color-ink)] hover:text-[var(--color-signal)] transition-colors">
             Syed Ahmed
