@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useLocation, Link, useNavigate } from "react-router-dom";
-import { Mail } from "lucide-react";
+import { Mail, Moon, Sun } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./icons";
 import { profile } from "../data";
+import { useTheme } from "../hooks/useTheme";
 
 const links = [
   { href: "#about", label: "about" },
@@ -16,6 +17,7 @@ export default function Nav() {
   const [open, setOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const { theme, toggleTheme } = useTheme();
   const isProjectDetails = location.pathname.startsWith("/projects/");
   const projectState = location.state as { fromProjectId?: string } | null;
 
@@ -43,14 +45,27 @@ export default function Nav() {
         <Link to="/" className="font-mono text-xs sm:text-sm text-[var(--color-ink)]">
           ~/gillani
         </Link>
-        <button
-          onClick={() => setOpen(!open)}
-          className="font-mono text-xs border border-[var(--color-line)] px-3 py-1.5 rounded hover:bg-[var(--color-paper-dim)] transition-colors"
-          aria-expanded={open}
-          aria-label="Toggle navigation"
-        >
-          {open ? "close" : "menu"}
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={toggleTheme}
+            className="p-1.5 rounded hover:bg-[var(--color-paper-dim)] transition-colors"
+            aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+          >
+            {theme === 'light' ? (
+              <Moon size={18} className="text-[var(--color-ink-soft)]" />
+            ) : (
+              <Sun size={18} className="text-[var(--color-ink-soft)]" />
+            )}
+          </button>
+          <button
+            onClick={() => setOpen(!open)}
+            className="font-mono text-xs border border-[var(--color-line)] px-3 py-1.5 rounded hover:bg-[var(--color-paper-dim)] transition-colors"
+            aria-expanded={open}
+            aria-label="Toggle navigation"
+          >
+            {open ? "close" : "menu"}
+          </button>
+        </div>
       </header>
       {open && (
         <div className="lg:hidden border-b border-[var(--color-line)] bg-[var(--color-paper)] px-4 sm:px-5 py-3 sm:py-4 flex flex-col gap-3 w-full">
@@ -87,7 +102,7 @@ export default function Nav() {
           <img
             src={profile.photo}
             alt={profile.name}
-            className="h-20 w-20 rounded-full object-contain border border-[var(--color-line)] mb-4 bg-white"
+            className="h-20 w-20 rounded-full object-contain border border-[var(--color-line)] mb-4 bg-[var(--color-paper-dim)]"
           />
           <Link to="/" className="block font-display text-lg font-semibold text-[var(--color-ink)] hover:text-[var(--color-signal)] transition-colors">
             Syed Ahmed
@@ -147,15 +162,26 @@ export default function Nav() {
         </div>
 
         <div className="flex items-center gap-4">
-          <a href={profile.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-[var(--color-ink-soft)] hover:text-[var(--color-ink)]">
+          <a href={profile.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-[var(--color-ink-soft)] hover:text-[var(--color-ink)] transition-colors">
             <GithubIcon size={18} />
           </a>
-          <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-[var(--color-ink-soft)] hover:text-[var(--color-ink)]">
+          <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-[var(--color-ink-soft)] hover:text-[var(--color-ink)] transition-colors">
             <LinkedinIcon size={18} />
           </a>
-          <a href={`mailto:${profile.email}`} aria-label="Email" className="text-[var(--color-ink-soft)] hover:text-[var(--color-ink)]">
+          <a href={`mailto:${profile.email}`} aria-label="Email" className="text-[var(--color-ink-soft)] hover:text-[var(--color-ink)] transition-colors">
             <Mail size={18} />
           </a>
+          <button
+            onClick={toggleTheme}
+            className="text-[var(--color-ink-soft)] hover:text-[var(--color-ink)] transition-colors"
+            aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+          >
+            {theme === 'light' ? (
+              <Moon size={18} />
+            ) : (
+              <Sun size={18} />
+            )}
+          </button>
         </div>
       </nav>
     </>

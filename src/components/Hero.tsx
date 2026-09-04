@@ -7,7 +7,7 @@ export default function Hero() {
         <img
           src={profile.photo}
           alt={profile.name}
-          className="h-14 w-14 sm:h-20 sm:w-20 rounded-full object-contain border border-[var(--color-line)] flex-shrink-0 bg-white"
+          className="h-14 w-14 sm:h-20 sm:w-20 rounded-full object-contain border border-[var(--color-line)] flex-shrink-0 bg-[var(--color-paper-dim)]"
         />
         <p className="font-mono text-xs sm:text-sm text-[var(--color-signal)]">
           01 — building for the web since 2024

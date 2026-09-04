@@ -4,15 +4,48 @@
   --font-display: 'Space Grotesk', sans-serif;
   --font-mono: 'IBM Plex Mono', monospace;
   --font-sans: 'Inter', sans-serif;
+}
 
-  --color-paper: #F4F5F1;
-  --color-paper-dim: #EAEBE5;
-  --color-ink: #14171C;
-  --color-ink-soft: #4B4F58;
-  --color-line: #D8D9D1;
-  --color-signal: #2A4CFF;
-  --color-signal-soft: #E8ECFF;
-  --color-flag: #E0562A;
+@layer base {
+  /* Light theme (default) */
+  html,
+  html.light {
+    --color-paper: #F4F5F1;
+    --color-paper-dim: #EAEBE5;
+    --color-ink: #14171C;
+    --color-ink-soft: #4B4F58;
+    --color-line: #D8D9D1;
+    --color-signal: #2A4CFF;
+    --color-signal-soft: #E8ECFF;
+    --color-flag: #E0562A;
+  }
+
+  /* Dark theme - both class and attribute selectors */
+  html.dark,
+  html[data-theme="dark"] {
+    --color-paper: #0F1117;
+    --color-paper-dim: #1A1F28;
+    --color-ink: #E8EAED;
+    --color-ink-soft: #8B8F9A;
+    --color-line: #30363D;
+    --color-signal: #58A6FF;
+    --color-signal-soft: #1F6FEB;
+    --color-flag: #FF7B72;
+  }
+
+  /* System preference fallback */
+  @media (prefers-color-scheme: dark) {
+    html:not(.light):not([data-theme="light"]) {
+      --color-paper: #0F1117;
+      --color-paper-dim: #1A1F28;
+      --color-ink: #E8EAED;
+      --color-ink-soft: #8B8F9A;
+      --color-line: #30363D;
+      --color-signal: #58A6FF;
+      --color-signal-soft: #1F6FEB;
+      --color-flag: #FF7B72;
+    }
+  }
 }
 
 html,
@@ -34,6 +67,28 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Prevent transitions on initial load */
+html:not(.theme-ready) {
+  --transition-duration: 0ms;
+}
+
+html.theme-ready {
+  --transition-duration: 300ms;
+}
+
+/* Apply smooth transitions only when theme is ready */
+body,
+button,
+a,
+header,
+nav,
+section,
+div {
+  transition: background-color var(--transition-duration) ease,
+              color var(--transition-duration) ease,
+              border-color var(--transition-duration) ease;
 }
 
 ::selection {
