@@ -6,7 +6,7 @@ export const profile = {
   phone: "+92 304 0530152",
   photo: "/ahmed.jpg",
   github: "https://github.com/ahmed-gillani",
-  linkedin: "https://linkedin.com/in/your-linkedin-handle",
+  linkedin: "https://www.linkedin.com/in/syed-ahmed-gillani-505824202/",
   summary:
     "Frontend developer with 1+ years building clean, high-performance, and intuitive user interfaces. I architect scalable applications with React.js, Next.js, TypeScript, and Tailwind CSS, including a live production car service booking platform. Skilled in React Query, REST API integration, and role-based access control. BS Computer Engineering graduate who thrives in collaborative, transparent teams.",
 };
