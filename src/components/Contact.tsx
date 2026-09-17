@@ -52,7 +52,7 @@ export default function Contact() {
         >
           <span className="text-[var(--color-signal)] flex-shrink-0"><LinkedinIcon size={18} /></span>
           <span className="border-b border-transparent group-hover:border-[var(--color-ink)] transition-colors">
-            linkedin.com/in/your-linkedin-handle
+            https://www.linkedin.com/in/syed-ahmed-gillani-505824202/
           </span>
         </a>
       </div>
