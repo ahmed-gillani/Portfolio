@@ -306,8 +306,7 @@ This portfolio is open source. Feel free to use it as a template for your own po
 
 - **Email** — engrahmedgillani@gmail.com
 - **GitHub** — https://github.com/ahmed-gillani
-- **LinkedIn** — https://linkedin.com/in/your-linkedin-handle
-
+- **LinkedIn** — https://www.linkedin.com/in/syed-ahmed-gillani-505824202/
 ---
 
 **Last Updated:** September 2026  
